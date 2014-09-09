@@ -38,7 +38,7 @@ A url as a string (e.g. `http://example.com`). Relative URLs are allowed in the 
  - `headers` - http headers (default: `{}`)
  - `body` - body for PATCH, POST and PUT requests.  Must be a `Buffer` or `String` (only strings are accepted client side)
  - `json` - sets `body` but to JSON representation of value and adds `Content-type: application/json`.  Does not have any affect on how the response is treated.
- - `cache` - Can be `'memory'` or `'file'`, and enables a local cache of content.  A separate process is still spawned even for cache requests.
+ - `cache` - Can be `'memory'` or `'file'`, and enables a local cache of content.  A separate process is still spawned even for cache requests.  This option is only used if running in node.js
 
 **Returns:**
 
@@ -70,6 +70,8 @@ function getBody(encoding) {
 Internally, this uses a separate worker process that is run using either [childProcess.spawnSync](http://nodejs.org/docs/v0.11.13/api/child_process.html#child_process_child_process_spawnsync_command_args_options) if available, or falling back to [spawn-sync](https://www.npmjs.org/package/spawn-sync) if not.  The fallback will attempt to install a native module for synchronous execution, and fall back to doing busy waiting for a file to exist.  All this ultimatley means that the module is totally cross platform and does not require native code compilation support.
 
 The worker then makes the actual request using [then-request](https://www.npmjs.org/package/then-request) so this has almost exactly the same API as that.
+
+This can also be used in a web browser via browserify because xhr has built in support for synchronous execution.  Note that this is not recommended as it will be blocking.
 
 ## License
 
