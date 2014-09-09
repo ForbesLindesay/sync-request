@@ -1,6 +1,6 @@
 {
   "name": "sync-request",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Make synchronous web requests",
   "browser": "./browser.js",
   "keywords": ["request", "http", "https", "cache", "browserify", "synchronous", "sync"],
