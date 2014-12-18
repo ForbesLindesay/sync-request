@@ -18,11 +18,11 @@ function doRequest(method, url, options) {
   });
   var res = spawnSync('node', [require.resolve('./lib/worker.js')], {input: req});
   if (res.status !== 0) {
-    process.stderr.write(res.stderr);
-    process.exit(res.status);
+    throw new Error(res.stderr.toString());
   }
   if (res.error) {
-    throw res.err;
+    if (typeof res.error === 'string') res.error = new Error(res.error);
+    throw res.error;
   }
   var response = JSON.parse(res.stdout);
   if (response.success) {
