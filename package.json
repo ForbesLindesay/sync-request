@@ -1,9 +1,17 @@
 {
   "name": "sync-request",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Make synchronous web requests",
   "browser": "./browser.js",
-  "keywords": ["request", "http", "https", "cache", "browserify", "synchronous", "sync"],
+  "keywords": [
+    "request",
+    "http",
+    "https",
+    "cache",
+    "browserify",
+    "synchronous",
+    "sync"
+  ],
   "dependencies": {
     "concat-stream": "^1.4.7",
     "http-response-object": "^1.0.1",
