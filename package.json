@@ -16,7 +16,7 @@
     "concat-stream": "^1.4.7",
     "http-response-object": "^1.0.1",
     "spawn-sync": "^1.0.1",
-    "then-request": "^1.1.0"
+    "then-request": "^2.0.1"
   },
   "scripts": {
     "test": "node test"
