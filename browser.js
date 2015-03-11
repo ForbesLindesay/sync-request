@@ -4,7 +4,7 @@ var Response = require('http-response-object');
 var handleQs = require('then-request/lib/handle-qs.js');
 
 module.exports = doRequest;
-function doRequest(method, url, options, callback) {
+function doRequest(method, url, options) {
   var xhr = new window.XMLHttpRequest();
 
   // check types of arguments
@@ -15,20 +15,13 @@ function doRequest(method, url, options, callback) {
   if (typeof url !== 'string') {
     throw new TypeError('The URL/path must be a string.');
   }
-  if (typeof options === 'function') {
-    callback = options;
-    options = {};
-  }
   if (options === null || options === undefined) {
     options = {};
   }
   if (typeof options !== 'object') {
     throw new TypeError('Options must be an object (or null).');
   }
-  if (typeof callback !== 'function') {
-    callback = undefined;
-  }
-
+  
   method = method.toUpperCase();
   options.headers = options.headers || {};
 
