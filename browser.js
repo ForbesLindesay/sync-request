@@ -9,23 +9,23 @@ function doRequest(method, url, options, callback) {
 
   // check types of arguments
 
-  if (typeof method !== 'string') {
+  if (method.constructor !== String) {
     throw new TypeError('The method must be a string.');
   }
-  if (typeof url !== 'string') {
+  if (url.constructor !== String) {
     throw new TypeError('The URL/path must be a string.');
   }
-  if (typeof options === 'function') {
+  if (options.constructor === Function) {
     callback = options;
     options = {};
   }
   if (options === null || options === undefined) {
     options = {};
   }
-  if (typeof options !== 'object') {
+  if (options.constructor !== Object) {
     throw new TypeError('Options must be an object (or null).');
   }
-  if (typeof callback !== 'function') {
+  if (callback.constructor !== Function) {
     callback = undefined;
   }
 
