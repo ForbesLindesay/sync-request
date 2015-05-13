@@ -37,7 +37,7 @@ A url as a string (e.g. `http://example.com`). Relative URLs are allowed in the 
  - `qs` - an object containing querystring values to be appended to the uri
  - `headers` - http headers (default: `{}`)
  - `body` - body for PATCH, POST and PUT requests.  Must be a `Buffer` or `String` (only strings are accepted client side)
- - `json` - sets `body` but to JSON representation of value and adds `Content-type: application/json`.  Does not have any affect on how the response is treated.
+ - `json` - set this to the json you want to send to the server. This will then set the `body` to JSON representation of value and adds `Content-type: application/json`.  Does not have any affect on how the response is treated.
  - `cache` - Set this to `'file'` to enable a local cache of content.  A separate process is still spawned even for cache requests.  This option is only used if running in node.js
  - `followRedirects` - defaults to `true` but can be explicitly set to `false` on node.js to prevent then-request following redirects automatically.
  - `gzip` - defaults to `true` but can be explicitly set to `false` on node.js to prevent then-request automatically supporting the gzip encoding on responses.
