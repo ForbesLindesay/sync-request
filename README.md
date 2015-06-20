@@ -30,12 +30,11 @@ console.log(res.getBody());
 
 ```js
 var request = require('sync-request');
-var opt_obj = {
-	'headers': {
-		'user-agent': 'example-user-agent'
-	}
-};
-var res = request('GET', 'https://example.com');
+var res = request('GET', 'https://example.com', {
+                        'headers': {
+                          'user-agent': 'example-user-agent'
+                        }
+                      });
 console.log(res.getBody());
 ```
 
