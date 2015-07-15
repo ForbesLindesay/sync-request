@@ -31,11 +31,21 @@ console.log(res.getBody());
 ```js
 var request = require('sync-request');
 var res = request('GET', 'https://example.com', {
-                        'headers': {
-                          'user-agent': 'example-user-agent'
-                        }
-                      });
+  'headers': {
+    'user-agent': 'example-user-agent'
+  }
+});
 console.log(res.getBody());
+```
+
+- POST request to a JSON endpoint
+
+```js
+var request = require('sync-request');
+var res = request('POST', 'https://example.com/create-user', {
+  json: { username: 'ForbesLindesay' }
+});
+var user = JSON.parse(res.getBody('utf8'));
 ```
 
 **Method:**
