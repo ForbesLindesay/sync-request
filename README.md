@@ -18,9 +18,23 @@ request(method, url, options)
 
 e.g.
 
+- GET request without options
+
 ```js
 var request = require('sync-request');
 var res = request('GET', 'http://example.com');
+console.log(res.getBody());
+```
+
+- GET request with options
+
+```js
+var request = require('sync-request');
+var res = request('GET', 'https://example.com', {
+                        'headers': {
+                          'user-agent': 'example-user-agent'
+                        }
+                      });
 console.log(res.getBody());
 ```
 
