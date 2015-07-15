@@ -66,6 +66,24 @@ A url as a string (e.g. `http://example.com`). Relative URLs are allowed in the 
  - `followRedirects` - defaults to `true` but can be explicitly set to `false` on node.js to prevent then-request following redirects automatically.
  - `gzip` - defaults to `true` but can be explicitly set to `false` on node.js to prevent then-request automatically supporting the gzip encoding on responses.
 
+
+
+ - `qs` - an object containing querystring values to be appended to the uri
+ - `headers` - http headers (default: `{}`)
+ - `body` - body for PATCH, POST and PUT requests.  Must be a `Buffer` or `String` (only strings are accepted client side)
+ - `json` - sets `body` but to JSON representation of value and adds `Content-type: application/json`.  Does not have any affect on how the response is treated.
+ - `cache` - Set this to `'file'` to enable a local cache of content.  A separate process is still spawned even for cache requests.  This option is only used if running in node.js
+ - `followRedirects` - defaults to `true` but can be explicitly set to `false` on node.js to prevent then-request following redirects automatically.
+ - `maxRedirects` - sets the maximum number of redirects to follow before erroring on node.js (default: `Infinity`)
+ - `gzip` - defaults to `true` but can be explicitly set to `false` on node.js to prevent then-request automatically supporting the gzip encoding on responses.
+ - `timeout` (default: `false`) - times out if no response is returned within the given number of milliseconds.
+ - `socketTimeout` (default: `false`) - calls `req.setTimeout` internally which causes the request to timeout if no new data is seen for the given number of milliseconds.  This option is ignored in the browser.
+ - `retry` (default: `false`) - retry GET requests.  Set this to `true` to retry when the request errors or returns a status code greater than or equal to 400
+ - `retryDelay` (default: `200`) - the delay between retries in milliseconds
+ - `maxRetries` (default: `5`) - the number of times to retry before giving up.
+
+These options are passed through to [then-request](https://github.com/then/then-request), so any options that work for then-request should work for sync-request (with the exception of custom and memory caching strategies, and passing functions for handling retries).
+
 **Returns:**
 
 A `Response` object.
