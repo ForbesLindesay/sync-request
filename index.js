@@ -16,7 +16,7 @@ function doRequest(method, url, options) {
     url: url,
     options: options
   });
-  var res = spawnSync('node', [require.resolve('./lib/worker.js')], {input: req});
+  var res = spawnSync(process.execPath, [require.resolve('./lib/worker.js')], {input: req});
   if (res.status !== 0) {
     throw new Error(res.stderr.toString());
   }
