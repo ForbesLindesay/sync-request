@@ -18,6 +18,11 @@
     "spawn-sync": "^1.0.1",
     "then-request": "^2.0.1"
   },
+  "devDependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "morgan": "^1.6.1"
+  },
   "scripts": {
     "test": "node test"
   },

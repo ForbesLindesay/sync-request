@@ -1,31 +1,25 @@
-var request = require('../')
+'use strict';
+var child = require('child_process'),
+    fork = child.fork,
+    server = fork(__dirname+ '/fake-server');
 
-// Test GET request
-console.dir('http://nodejs.org');
-var res = request('GET', 'http://nodejs.org');
+server.on('message', function(m) {
+    if (m === 'started') {
+        console.log('#############################');
+        console.log('#### init internal test #####');
+        console.log('#############################');
 
-console.log(res);
-console.log("Reponse Body Length: ", res.getBody().length);
+        require('./internal-test');
 
-// Test HTTPS POST request
-console.dir('https://talk.to/');
-var res = request('POST', 'https://talk.to/', { body: '<body/>' });
+        server.send('stop');
+    } else {
+        console.log('#############################');
+        console.log('#### init external test #####');
+        console.log('#############################');
 
-console.log(res);
-console.log("Reponse Body Length: ", res.getBody().length);
+        require('./external-test');
 
-console.dir('https://apache.org');
-var errored = false;
-try {
-  // Test unauthorized HTTPS GET request
-  var res = request('GET', 'https://apache.org');
-  console.log(res);
-  console.log("Reponse Body: ", res.body.toString());
-  errored = true;
-} catch(ex) {
-  console.log("Successully rejected unauthorized host: https://apache.org/");
-}
-if (errored)
-  throw new Error('Should have rejected unauthorized https get request');
-
-process.exit(0);
+        process.exit(0);
+    }
+});
+server.send('start');
