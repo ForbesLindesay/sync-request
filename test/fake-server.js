@@ -16,24 +16,32 @@ app.use(bodyParser.json());
 // configure log
 app.use(morgan('dev'));
 
-var started =false;
+var started = false;
 exports.isStarted = function() { return started };
 
-exports.start = function(cb) {
-    server = app.listen($port, function () {
-        started = true;
-        console.log('nsmockup server started', $port);
-        return cb && setTimeout(cb, 1000);
-    });
-};
+process.on('message', function(m) {
+    console.log('CHILD got message:', m);
+    if (m === 'start') {
+        server = app.listen($port, function () {
+            started = true;
+            console.log('fake server started', $port);
+            return process.send('started');// m.cb && setTimeout(m.cb, 1000);
+        });
+        server.on('connection', function() {
+            console.log('opa connect');
+        });
 
-exports.stop = function(cb) {
-    server.close(function () {
-        started = false;
-        console.log('nsmockup server stopped', $port);
-        return cb && setTimeout(cb, 1000);
-    });
-};
+        server.on('close', function() {
+            console.log('opa close');
+        });
+    }  else {
+        server.close(function () {
+            started = false;
+            console.log('fake server stopped', $port);
+            return process.send('closed') && process.exit(0);
+        });
+    }
+});
 
 ['get', 'post', 'put', 'delete'].forEach(function(method) {
     app.route('/internal-test')[method](function(req, res){

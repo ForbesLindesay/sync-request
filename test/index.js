@@ -1,16 +1,19 @@
 'use strict';
+var fork = require('child_process').fork,
+    server = fork(__dirname+ '/fake-server');
 
-var server = require('./fake-server');
+server.on('message', function(m) {
+    console.log('PARENT got message:', m);
 
-server.start(function() {
-    console.log('#############################');
-    console.log('#### init interal test ######');
-    console.log('#############################');
+    if (m === 'started') {
+        console.log('#############################');
+        console.log('#### init interal test ######');
+        console.log('#############################');
 
-    require('./internal-test');
+        require('./internal-test');
 
-    server.stop(function() {
-
+        server.send('stop');
+    } else {
         console.log('#############################');
         console.log('#### init external test #####');
         console.log('#############################');
@@ -18,5 +21,6 @@ server.start(function() {
         require('./external-test');
 
         process.exit(0);
-    })
+    }
 });
+server.send('start');
