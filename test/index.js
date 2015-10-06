@@ -9,7 +9,7 @@ console.log("Reponse Body Length: ", res.getBody().length);
 
 // Test HTTPS POST request
 console.dir('https://talk.to/');
-var res = request('POST', 'https://talk.to/', { body: '<body/>' });
+var res = request('POST', 'http://httpbin.org/post', { body: '<body/>' });
 
 console.log(res);
 console.log("Reponse Body Length: ", res.getBody().length);
