@@ -1,13 +1,12 @@
 'use strict';
-var fork = require('child_process').fork,
+var child = require('child_process'),
+    fork = child.fork,
     server = fork(__dirname+ '/fake-server');
 
 server.on('message', function(m) {
-    console.log('PARENT got message:', m);
-
     if (m === 'started') {
         console.log('#############################');
-        console.log('#### init interal test ######');
+        console.log('#### init internal test #####');
         console.log('#############################');
 
         require('./internal-test');

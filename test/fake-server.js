@@ -2,8 +2,7 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
     morgan = require('morgan'),
-    $port = 3030,
-    server;
+    PORT = 3030;
 
 var app = express();
 
@@ -19,25 +18,18 @@ app.use(morgan('dev'));
 var started = false;
 exports.isStarted = function() { return started };
 
+var server;
 process.on('message', function(m) {
-    console.log('CHILD got message:', m);
     if (m === 'start') {
-        server = app.listen($port, function () {
+        server = app.listen(PORT, function () {
             started = true;
-            console.log('fake server started', $port);
+            console.log('fake server started', PORT);
             return process.send('started');// m.cb && setTimeout(m.cb, 1000);
-        });
-        server.on('connection', function() {
-            console.log('opa connect');
-        });
-
-        server.on('close', function() {
-            console.log('opa close');
         });
     }  else {
         server.close(function () {
             started = false;
-            console.log('fake server stopped', $port);
+            console.log('fake server stopped', PORT);
             return process.send('closed') && process.exit(0);
         });
     }
