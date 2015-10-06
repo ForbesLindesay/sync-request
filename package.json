@@ -26,5 +26,10 @@
     "url": "https://github.com/ForbesLindesay/sync-request.git"
   },
   "author": "ForbesLindesay",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "morgan": "^1.6.1"
+  }
 }

@@ -1,31 +1,22 @@
-var request = require('../')
+'use strict';
 
-// Test GET request
-console.dir('http://nodejs.org');
-var res = request('GET', 'http://nodejs.org');
+var server = require('./fake-server');
 
-console.log(res);
-console.log("Reponse Body Length: ", res.getBody().length);
+server.start(function() {
+    console.log('#############################');
+    console.log('#### init interal test ######');
+    console.log('#############################');
 
-// Test HTTPS POST request
-console.dir('https://talk.to/');
-var res = request('POST', 'http://httpbin.org/post', { body: '<body/>' });
+    require('./internal-test');
 
-console.log(res);
-console.log("Reponse Body Length: ", res.getBody().length);
+    server.stop(function() {
 
-console.dir('https://apache.org');
-var errored = false;
-try {
-  // Test unauthorized HTTPS GET request
-  var res = request('GET', 'https://apache.org');
-  console.log(res);
-  console.log("Reponse Body: ", res.body.toString());
-  errored = true;
-} catch(ex) {
-  console.log("Successully rejected unauthorized host: https://apache.org/");
-}
-if (errored)
-  throw new Error('Should have rejected unauthorized https get request');
+        console.log('#############################');
+        console.log('#### init external test #####');
+        console.log('#############################');
 
-process.exit(0);
+        require('./external-test');
+
+        process.exit(0);
+    })
+});
