@@ -26,7 +26,7 @@ function doRequest(method, url, options) {
   }
   var response = JSON.parse(res.stdout);
   if (response.success) {
-    return new HttpResponse(response.response.statusCode, response.response.headers, response.response.body);
+    return new HttpResponse(response.response.statusCode, response.response.headers, response.response.body, response.response.url);
   } else {
     throw new Error(response.error.message || response.error || response);
   }
