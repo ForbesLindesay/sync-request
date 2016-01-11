@@ -5,7 +5,7 @@ var handleQs = require('then-request/lib/handle-qs.js');
 
 module.exports = doRequest;
 function doRequest(method, url, options) {
-  var xhr = new window.XMLHttpRequest();
+  var xhr = new XMLHttpRequest();
 
   // check types of arguments
 
@@ -28,7 +28,7 @@ function doRequest(method, url, options) {
   // handle cross domain
 
   var match;
-  var crossDomain = !!((match = /^([\w-]+:)?\/\/([^\/]+)/.exec(options.uri)) && (match[2] != window.location.host));
+  var crossDomain = !!((match = /^([\w-]+:)?\/\/([^\/]+)/.exec(options.uri)) && (match[2] != location.host));
   if (!crossDomain) options.headers['X-Requested-With'] = 'XMLHttpRequest';
 
   // handle query string
