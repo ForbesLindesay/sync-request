@@ -14,7 +14,7 @@ function doRequest(method, url, options) {
   if (!spawnSync) {
     throw new Error(
       'Sync-request requires node version 0.12 or later.  If you need to use it with an older version of node\n' +
-      'you can `npm install spawn-sync@2.2.0`, which was the last version to support older versions of node.'
+      'you can `npm install sync-request@2.2.0`, which was the last version to support older versions of node.'
     );
   }
   var req = JSON.stringify({
