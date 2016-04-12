@@ -7,6 +7,13 @@ var res = request('GET', 'http://localhost:3030/internal-test', {timeout: 2000})
 console.log(res);
 console.log("Reponse Body Length: ", res.getBody().length);
 
+// Test GET request
+console.log('GET2', 'http://localhost:3030/internal-test');
+var resFromHelper = request.get('http://localhost:3030/internal-test', {timeout: 2000});
+
+console.log(resFromHelper);
+console.log("Reponse Body Length from helper: ", resFromHelper.getBody().length);
+
 // Test HTTPS POST request
 console.log('POST', 'http://localhost:3030/internal-test');
 var res = request('POST', 'http://localhost:3030/internal-test', {timeout: 2000, body: '<body/>' });
