@@ -7,6 +7,15 @@ var res = request('GET', 'http://nodejs.org');
 console.log(res);
 console.log("Reponse Body Length: ", res.getBody().length);
 
+// Test GET request
+console.dir('http://nodejs.org');
+var resFromHelper = request.get('http://nodejs.org');
+
+console.log('Res from helper');
+console.log(resFromHelper);
+console.log("Reponse Body Length from helper: ", resFromHelper.getBody().length);
+
+
 // Test HTTPS POST request
 console.dir('https://talk.to/');
 var res = request('POST', 'http://httpbin.org/post', { body: '<body/>' });

@@ -10,6 +10,7 @@ var JSON = require('./lib/json-buffer');
 Function('', fs.readFileSync(require.resolve('./lib/worker.js'), 'utf8'));
 
 module.exports = doRequest;
+
 function doRequest(method, url, options) {
   if (!spawnSync) {
     throw new Error(
@@ -36,4 +37,8 @@ function doRequest(method, url, options) {
   } else {
     throw new Error(response.error.message || response.error || response);
   }
+}
+
+doRequest.get = function (url, options) {
+	return doRequest('GET', url, options);
 }
