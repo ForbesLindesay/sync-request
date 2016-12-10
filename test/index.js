@@ -10,6 +10,7 @@ server.on('message', function(m) {
         console.log('#############################');
 
         require('./internal-test');
+        require('./internal-helper-method-test');
 
         server.send('stop');
     } else {
@@ -18,6 +19,7 @@ server.on('message', function(m) {
         console.log('#############################');
 
         require('./external-test');
+        require('./external-helper-method-test');
 
         process.exit(0);
     }
