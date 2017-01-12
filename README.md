@@ -101,6 +101,16 @@ function getBody(encoding) {
 }
 ```
 
+## Common Problems
+
+### Could not use "nc", falling back to slower node.js method for sync requests.
+
+If you are running on windows, or some unix systems, you may see the message above.  It will not cause any problems, but will add an overhead of ~100ms to each request you make.  If you want to speed up you requests, you will need to install an implementation of the `nc` unix utility.  This usually done via something like:
+
+```
+apt-get install netcat
+```
+
 ## How is this possible?
 
 Internally, this uses a separate worker process that is run using [childProcess.spawnSync](http://nodejs.org/docs/v0.11.13/api/child_process.html#child_process_child_process_spawnsync_command_args_options).
