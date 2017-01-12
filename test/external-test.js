@@ -25,7 +25,6 @@ try {
 } catch(ex) {
   console.log("Successully rejected unauthorized host: https://apache.org/");
 }
-if (errored)
+if (errored) {
   throw new Error('Should have rejected unauthorized https get request');
-
-
+}

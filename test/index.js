@@ -1,4 +1,10 @@
 'use strict';
+
+if (process.argv.indexOf('--legacy') !== -1) {
+  // break PATH so running `nc` will fail.
+  process.env.PATH = '';
+}
+
 var child = require('child_process'),
     fork = child.fork,
     server = fork(__dirname+ '/fake-server');

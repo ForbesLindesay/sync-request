@@ -27,4 +27,3 @@ var res = request('DELETE', 'http://localhost:3030/internal-test', {timeout: 200
 
 console.log(res);
 console.log("Reponse Body Length: ", res.getBody().length);
-
