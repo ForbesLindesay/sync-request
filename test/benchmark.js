@@ -5,7 +5,7 @@ const spawnSync = require('child_process').spawnSync;
 const thenRequest = require('then-request');
 const syncRequest = require('../');
 
-spawn(process.execPath, [require.resolve('./benchmark-server.js')]);
+const server = spawn(process.execPath, [require.resolve('./benchmark-server.js')]);
 
 setTimeout(() => {
   let asyncDuration, syncDuration;
@@ -28,10 +28,12 @@ setTimeout(() => {
     syncDuration = endSync - startSync;
     console.log('1000 sync requests in: ' + syncDuration);
   }).then(() => {
+    server.kill();
     if (syncDuration > (asyncDuration * 10)) {
       console.error('This is more than 10 times slower than using async requests, that is not good enough.');
       process.exit(1);
     }
+    process.exit(0);
   }, function (err) {
     console.error(err.stack);
     process.exit(1);
