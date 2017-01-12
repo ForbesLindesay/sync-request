@@ -1,28 +1,30 @@
-var spawn = require('child_process').spawn;
-var spawnSync = require('child_process').spawnSync;
-var thenRequest = require('then-request');
-var syncRequest = require('../');
+'use strict';
 
-spawn(process.execPath, [require.resolve('./benchmark-server.js')], {input: new Buffer(0)});
+const spawn = require('child_process').spawn;
+const spawnSync = require('child_process').spawnSync;
+const thenRequest = require('then-request');
+const syncRequest = require('../');
+
+spawn(process.execPath, [require.resolve('./benchmark-server.js')]);
 
 setTimeout(() => {
   let asyncDuration, syncDuration;
-  var ready = Promise.resolve(null);
-  var startAsync = Date.now();
-  for (var i = 0; i < 1000; i++) {
+  let ready = Promise.resolve(null);
+  const startAsync = Date.now();
+  for (let i = 0; i < 1000; i++) {
     ready = ready.then(function () {
       return thenRequest('get', 'http://localhost:3045');
     });
   }
   ready.then(function () {
-    var endAsync = Date.now();
+    const endAsync = Date.now();
     asyncDuration = endAsync - startAsync;
     console.log('1000 async requests in: ' + asyncDuration);
-    var startSync = Date.now();
-    for (var i = 0; i < 500; i++) {
+    const startSync = Date.now();
+    for (let i = 0; i < 500; i++) {
       syncRequest('get', 'http://localhost:3045');
     }
-    var endSync = Date.now();
+    const endSync = Date.now();
     syncDuration = endSync - startSync;
     console.log('1000 sync requests in: ' + syncDuration);
   }).then(() => {
@@ -35,4 +37,4 @@ setTimeout(() => {
     process.exit(1);
   });
   ready = null;
-}, 500);
+}, 1000);

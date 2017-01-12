@@ -21,7 +21,7 @@ function doRequest(method, url, options) {
   if (typeof options !== 'object') {
     throw new TypeError('Options must be an object (or null).');
   }
-  
+
   method = method.toUpperCase();
   options.headers = options.headers || {};
 
