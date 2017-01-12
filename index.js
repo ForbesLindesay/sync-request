@@ -1,6 +1,7 @@
 'use strict';
 
-const {spawn, spawnSync} = require('child_process');
+const spawn = require('child_process').spawn;
+const spawnSync = require('child_process').spawnSync;
 const HttpResponse = require('http-response-object');
 const JSON = require('./lib/json-buffer');
 
