@@ -45,7 +45,7 @@ function start() {
         throw findPortResult.error;
       }
       const ncPort = findPortResult.stdout.toString('utf8').trim();
-      const p = spawn(process.execPath, [require.resolve('./lib/nc-server'), ncPort], {stdio: 'inherit'});
+      const p = spawn(process.execPath, [require.resolve('./lib/nc-server'), ncPort], {stdio: 'ignore'});
       p.unref();
       process.on('exit', () => {
         p.kill();
