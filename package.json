@@ -15,7 +15,7 @@
   "dependencies": {
     "command-exists": "^1.2.2",
     "concat-stream": "^1.4.7",
-    "get-port": "^2.1.0",
+    "get-port": "^3.0.0",
     "http-response-object": "^1.0.1",
     "then-request": "^2.0.1"
   },
