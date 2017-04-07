@@ -28,7 +28,7 @@ function doRequest(method, url, options) {
   // handle cross domain
 
   var match;
-  var crossDomain = !!((match = /^([\w-]+:)?\/\/([^\/]+)/.exec(options.uri)) && (match[2] != location.host));
+  var crossDomain = !!((match = /^([\w-]+:)?\/\/([^\/]+)/.exec(url)) && (match[2] != location.host));
   if (!crossDomain) options.headers['X-Requested-With'] = 'XMLHttpRequest';
 
   // handle query string
