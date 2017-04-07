@@ -2,6 +2,7 @@
 
 const spawn = require('child_process').spawn;
 const spawnSync = require('child_process').spawnSync;
+const commandExists = require('command-exists');
 const HttpResponse = require('http-response-object');
 const JSON = require('./lib/json-buffer');
 
@@ -29,8 +30,7 @@ function start() {
     );
   }
   try {
-    const result = spawnSync('nc', ['--help']);
-    if (result.stderr && result.stderr.toString('utf8').indexOf('hostname') !== -1) {
+    if (commandExists.sync('nc')) {
       const findPortResult = spawnSync(process.execPath, [require.resolve('./lib/find-port')]);
       if (findPortResult.status !== 0) {
         throw new Error(

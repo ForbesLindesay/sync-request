@@ -13,6 +13,7 @@
     "sync"
   ],
   "dependencies": {
+    "command-exists": "^1.2.2",
     "concat-stream": "^1.4.7",
     "get-port": "^2.1.0",
     "http-response-object": "^1.0.1",
