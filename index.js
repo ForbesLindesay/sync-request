@@ -77,7 +77,7 @@ function doRequestWith(command, args, method, url, options) {
     throw new Error(res.stderr.toString());
   }
   if (res.error) {
-    if (typeof res.error === 'string') res.error = new Error(res.error);
+    if (res.error.constructor === String) res.error = new Error(res.error);
     throw res.error;
   }
   var response = JSON.parse(res.stdout);
