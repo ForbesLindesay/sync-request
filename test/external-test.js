@@ -14,16 +14,16 @@ var res = request('POST', 'http://httpbin.org/post', { body: '<body/>' });
 console.log(res);
 console.log("Reponse Body Length: ", res.getBody().length);
 
-console.dir('https://apache.org');
+console.dir('https://expired.badssl.com');
 var errored = false;
 try {
   // Test unauthorized HTTPS GET request
-  var res = request('GET', 'https://apache.org');
+  var res = request('GET', 'https://expired.badssl.com');
   console.log(res);
   console.log("Reponse Body: ", res.body.toString());
   errored = true;
 } catch(ex) {
-  console.log("Successully rejected unauthorized host: https://apache.org/");
+  console.log("Successully rejected unauthorized host: https://expired.badssl.com");
 }
 if (errored) {
   throw new Error('Should have rejected unauthorized https get request');

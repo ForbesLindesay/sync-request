@@ -52,7 +52,7 @@ function start() {
       });
       let response = null;
       while (response !== 'pong') {
-        const result = spawnSync('nc', ['127.0.0.1', ncPort], {input: 'ping'});
+        const result = spawnSync('nc', ['127.0.0.1', ncPort], {input: 'ping\r\n'});
         response = result.stdout && result.stdout.toString();
       }
       command = 'nc';
@@ -72,7 +72,7 @@ function doRequestWith(command, args, method, url, options) {
     url: url,
     options: options
   });
-  var res = spawnSync(command, args, {input: req});
+  var res = spawnSync(command, args, {input: req + '\r\n'});
   if (res.status !== 0) {
     throw new Error(res.stderr.toString());
   }
