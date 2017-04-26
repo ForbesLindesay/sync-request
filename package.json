@@ -1,6 +1,6 @@
 {
   "name": "sync-request",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "Make synchronous web requests",
   "browser": "./browser.js",
   "keywords": [
