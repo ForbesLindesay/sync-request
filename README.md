@@ -1,5 +1,7 @@
 # sync-request
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ForbesLindesay/sync-request.svg)](https://greenkeeper.io/)
+
 Make synchronous web requests with cross platform support.
 
 # **N.B.** You should **not** be using this in a production application.  In a node.js application you will find that you are completely unable to scale your server.  In a client application you will find that sync-request causes the app to hang/freeze.  Synchronous web requests are the number one cause of browser crashes.  For production apps, you should use [then-request](https://github.com/then/then-request), which is exactly the same except that it is asynchronous.
