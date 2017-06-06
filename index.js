@@ -84,6 +84,10 @@ function doRequestWith(command, args, method, url, options) {
   if (response.success) {
     return new HttpResponse(response.response.statusCode, response.response.headers, response.response.body, response.response.url);
   } else {
-    throw new Error(response.error.message || response.error || response);
+    const err = new Error(response.error.message || response.error || response);
+    if (response.error.code) {
+      err.code = response.error.code;
+    }
+    throw err;
   }
 }
