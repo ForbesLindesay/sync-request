@@ -16,7 +16,7 @@
     "command-exists": "^1.2.2",
     "concat-stream": "^1.6.0",
     "get-port": "^3.1.0",
-    "http-response-object": "^1.1.0",
+    "http-response-object": "^2.0.0",
     "then-request": "^2.2.0"
   },
   "devDependencies": {
