@@ -2,6 +2,10 @@
 
 Make synchronous web requests with cross platform support.
 
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/gg9sZwctSLxyov1sJwW6pfyS/ForbesLindesay/sync-request'>
+  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/gg9sZwctSLxyov1sJwW6pfyS/ForbesLindesay/sync-request.svg' />
+</a>
+
 # **N.B.** You should **not** be using this in a production application.  In a node.js application you will find that you are completely unable to scale your server.  In a client application you will find that sync-request causes the app to hang/freeze.  Synchronous web requests are the number one cause of browser crashes.  For production apps, you should use [then-request](https://github.com/then/then-request), which is exactly the same except that it is asynchronous.
 
 [![Build Status](https://img.shields.io/travis/ForbesLindesay/sync-request/master.svg)](https://travis-ci.org/ForbesLindesay/sync-request)
