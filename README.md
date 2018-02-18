@@ -69,6 +69,7 @@ A url as a string (e.g. `http://example.com`). Relative URLs are allowed in the 
 * `cache` - Set this to `'file'` to enable a local cache of content. A separate process is still spawned even for cache requests. This option is only used if running in node.js
 * `followRedirects` - defaults to `true` but can be explicitly set to `false` on node.js to prevent then-request following redirects automatically.
 * `maxRedirects` - sets the maximum number of redirects to follow before erroring on node.js (default: `Infinity`)
+* `allowRedirectHeaders` (default: `null`) - an array of headers allowed for redirects (none if `null`).
 * `gzip` - defaults to `true` but can be explicitly set to `false` on node.js to prevent then-request automatically supporting the gzip encoding on responses.
 * `timeout` (default: `false`) - times out if no response is returned within the given number of milliseconds.
 * `socketTimeout` (default: `false`) - calls `req.setTimeout` internally which causes the request to timeout if no new data is seen for the given number of milliseconds. This option is ignored in the browser.
