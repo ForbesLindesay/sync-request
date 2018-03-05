@@ -1,6 +1,6 @@
 {
   "name": "sync-request",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "Make synchronous web requests",
   "main": "lib/index.js",
   "browser": "lib/browser.js",
