@@ -1,6 +1,6 @@
 # sync-request
 
-Make synchronous web requests with cross platform support.
+Make synchronous web requests with cross-platform support.
 
 > Requires at least node 8
 
@@ -113,7 +113,7 @@ function getBody(encoding) {
 
 ### Could not use "nc", falling back to slower node.js method for sync requests.
 
-If you are running on windows, or some unix systems, you may see the message above. It will not cause any problems, but will add an overhead of ~100ms to each request you make. If you want to speed up you requests, you will need to install an implementation of the `nc` unix utility. This usually done via something like:
+If you are running on windows, or some unix systems, you may see the message above. It will not cause any problems, but will add an overhead of ~100ms to each request you make. If you want to speed up your requests, you will need to install an implementation of the `nc` unix utility. This usually done via something like:
 
 ```
 apt-get install netcat
