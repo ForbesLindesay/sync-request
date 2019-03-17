@@ -7,6 +7,7 @@ import {Options, MessageOptions} from './Options';
 const init = require('sync-rpc');
 const remote = init(require.resolve('./worker'));
 
+export {HttpVerb, Response, Options};
 export {FormData};
 export default function request(
   method: HttpVerb,
