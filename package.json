@@ -17,7 +17,7 @@
   "dependencies": {
     "http-response-object": "^3.0.1",
     "sync-rpc": "^1.2.1",
-    "then-request": "^6.0.0"
+    "then-request": "^6.0.2"
   },
   "devDependencies": {
     "body-parser": "^1.14.1",
