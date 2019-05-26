@@ -22,7 +22,7 @@
   "devDependencies": {
     "body-parser": "^1.14.1",
     "cross-env": "^5.1.3",
-    "express": "^4.13.3",
+    "express": "^4.17.1",
     "flowgen2": "^2.2.0",
     "jest": "^22.1.4",
     "morgan": "^1.6.1",
